@@ -163,7 +163,9 @@
   color: hsl(var(--text-1));
   line-height: 1.72;
 }
-
+.rv.d2{
+  padding-top:10px;
+}
 .link {
   color: hsl(var(--cyan));
   font-weight: 600;
