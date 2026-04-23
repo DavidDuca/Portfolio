@@ -1,0 +1,72 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background: hsl(var(--bg-0));
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+.out { opacity: 0; visibility: hidden; }
+
+.eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: hsl(var(--cyan));
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: hsl(var(--text-0));
+  letter-spacing: -0.02em;
+}
+.title em {
+  font-style: normal;
+  background: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--purple-light)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.track {
+  width: 220px;
+  height: 3px;
+  background: hsl(var(--text-3) / 0.3);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, hsl(var(--cyan)), hsl(var(--purple-light)));
+  animation: fillAnim 1.6s ease forwards;
+}
+
+@keyframes fillAnim {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.dots { display: flex; gap: 8px; }
+.dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: hsl(var(--cyan));
+  opacity: 0.4;
+  animation: dotPulse 1.2s infinite;
+}
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
