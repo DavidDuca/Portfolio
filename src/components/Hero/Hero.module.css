@@ -236,9 +236,12 @@
 @media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr; }
   .right { display: none; }
+  .hero { padding-top: 80px; }
+
 }
 @media (max-width: 768px) {
   .stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }
   .btns { flex-direction: column; }
   .btnPrimary, .btnOutline { width: 100%; justify-content: center; }
+  .hero { padding-top: 100px; }
 }
