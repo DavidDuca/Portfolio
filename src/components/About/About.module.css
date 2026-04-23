@@ -2,6 +2,8 @@
   background: hsl(var(--bg-1));
   border-top: 1px solid hsl(var(--border-c) / 0.05);
   border-bottom: 1px solid hsl(var(--border-c) / 0.05);
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .grid {
@@ -163,9 +165,7 @@
   color: hsl(var(--text-1));
   line-height: 1.72;
 }
-.rv.d2{
-  padding-top:10px;
-}
+
 .link {
   color: hsl(var(--cyan));
   font-weight: 600;

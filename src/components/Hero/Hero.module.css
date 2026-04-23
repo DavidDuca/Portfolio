@@ -1,5 +1,5 @@
 .hero {
-  padding-top: calc(var(--nav-h) + 60px);
+  padding-top:0px;
   padding-bottom: 80px;
   background:
     radial-gradient(ellipse at top left, hsl(var(--cyan) / 0.08), transparent 50%),

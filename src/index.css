@@ -98,6 +98,7 @@ button {
 
 section {
   position: relative;
+  padding: 0px 0;
 }
 
 .tag {

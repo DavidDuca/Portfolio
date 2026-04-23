@@ -1,4 +1,7 @@
-.certs { background: hsl(var(--bg-0)); }
+.certs { background: hsl(var(--bg-0)); 
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
 
 .grid {
   display: grid;

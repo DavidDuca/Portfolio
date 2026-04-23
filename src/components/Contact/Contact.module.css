@@ -1,6 +1,8 @@
 .contact {
   background: hsl(var(--bg-1));
   border-top: 1px solid hsl(var(--border-c) / 0.05);
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .grid {

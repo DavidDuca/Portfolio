@@ -1,4 +1,7 @@
-.skills { background: hsl(var(--bg-0)); }
+.skills { background: hsl(var(--bg-0));
+  padding-top: 96px;
+  padding-bottom: 96px;
+ }
 
 .grid {
   display: grid;
