@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FaRobot, FaXmark, FaPaperPlane, FaSpinner } from "react-icons/fa6";
+import { supabase } from "@/integrations/supabase/client";
 import styles from "./Chatbot.module.css";
 
 interface Msg {
@@ -28,14 +29,12 @@ const Chatbot = () => {
     setInput("");
     setLoading(true);
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
+      const { data, error } = await supabase.functions.invoke("chat", {
+        body: { messages: next },
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Chat failed");
-      setMsgs([...next, { role: "assistant", content: data.reply || "..." }]);
+      if (error) throw new Error(error.message || "Chat failed");
+      if (data?.error) throw new Error(data.error);
+      setMsgs([...next, { role: "assistant", content: data?.reply || "..." }]);
     } catch (e: any) {
       setMsgs([...next, { role: "assistant", content: `⚠️ ${e?.message || "Something went wrong."}` }]);
     } finally {
