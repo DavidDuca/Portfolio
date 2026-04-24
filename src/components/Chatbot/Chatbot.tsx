@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, KeyboardEvent, ChangeEvent } from "react";
+import ReactMarkdown from "react-markdown";
 import { FaRobot, FaXmark, FaPaperPlane, FaSpinner } from "react-icons/fa6";
 import { supabase } from "@/integrations/supabase/client";
-import ReactMarkdown from 'react-markdown';
 import styles from "./Chatbot.module.css";
 
 interface Msg {
@@ -11,6 +11,8 @@ interface Msg {
 
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [isHiding, setIsHiding] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>([
     { role: "assistant", content: "Hi! I'm David's AI assistant. Ask me anything about his work, skills, or projects." },
   ]);
@@ -21,6 +23,21 @@ const Chatbot = () => {
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: "smooth" });
   }, [msgs, open]);
+
+  useEffect(() => {
+    const showTimer = setTimeout(() => setShowToast(true), 3000);
+    const startHidingTimer = setTimeout(() => setIsHiding(true), 7000);
+    const hideTimer = setTimeout(() => {
+      setShowToast(false);
+      setIsHiding(false);
+    }, 7500);
+    
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(startHidingTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
 
   const send = async () => {
     const text = input.trim();
@@ -36,8 +53,9 @@ const Chatbot = () => {
       if (error) throw new Error(error.message || "Chat failed");
       if (data?.error) throw new Error(data.error);
       setMsgs([...next, { role: "assistant", content: data?.reply || "..." }]);
-    } catch (e: any) {
-      setMsgs([...next, { role: "assistant", content: `⚠️ ${e?.message || "Something went wrong."}` }]);
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : "Something went wrong.";
+      setMsgs([...next, { role: "assistant", content: `⚠️ ${message}` }]);
     } finally {
       setLoading(false);
     }
@@ -45,6 +63,12 @@ const Chatbot = () => {
 
   return (
     <div id="chatbot-container" className={styles.wrap}>
+      {showToast && !open && (
+        <div className={`${styles.toast} ${isHiding ? styles.hiding : ""}`}>
+          Talk to David's AI Assistant!
+        </div>
+      )}
+
       {open && (
         <div className={styles.panel}>
           <div className={styles.head}>
@@ -61,7 +85,7 @@ const Chatbot = () => {
           </div>
 
           <div className={styles.body} ref={bodyRef}>
-           {msgs.map((m, i) => (
+            {msgs.map((m, i) => (
               <div key={i} className={`${styles.msg} ${styles[`msg_${m.role}`]}`}>
                 <ReactMarkdown>{m.content}</ReactMarkdown>
               </div>
@@ -77,8 +101,8 @@ const Chatbot = () => {
             <input
               className={styles.input}
               value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && send()}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+              onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => e.key === "Enter" && send()}
               placeholder="Type your question…"
               disabled={loading}
             />
