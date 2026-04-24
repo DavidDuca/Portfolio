@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FaRobot, FaXmark, FaPaperPlane, FaSpinner } from "react-icons/fa6";
 import { supabase } from "@/integrations/supabase/client";
+import ReactMarkdown from 'react-markdown';
 import styles from "./Chatbot.module.css";
 
 interface Msg {
@@ -60,9 +61,9 @@ const Chatbot = () => {
           </div>
 
           <div className={styles.body} ref={bodyRef}>
-            {msgs.map((m, i) => (
+           {msgs.map((m, i) => (
               <div key={i} className={`${styles.msg} ${styles[`msg_${m.role}`]}`}>
-                {m.content}
+                <ReactMarkdown>{m.content}</ReactMarkdown>
               </div>
             ))}
             {loading && (

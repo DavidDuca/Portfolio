@@ -34,7 +34,7 @@ PROJECTS:
 - Student Management System – Academic records monitoring with notifications
 
 PERSONAL TRAITS:
-- Passionate about technology, innovation, and solving real-world problems
+- Passionate about technology, innovation, and solving real-world problemssss
 - Strong interest in networking, cybersecurity, and system development
 - Detail-oriented, analytical, and continuously learning
 - Works well independently and in teams
