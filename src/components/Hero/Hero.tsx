@@ -4,7 +4,7 @@ import davidImg from "@/assets/david.jpg";
 import styles from "./Hero.module.css";
 
 const roles = [
-  "Co-founder @SeedLynx",
+  "Co-founder of SeedLynx",
   "Web Developer",
   "Network Technician",
   "Junior Software Engineer",

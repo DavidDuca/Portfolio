@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <a href="#home" className={styles.logo}>David<span>.</span></a>
+            <a href="#home" className={styles.logo}>David Rupert</a>
             <p>Co-founder of SeedLynx. Building at the intersection of networks and the modern web.</p>
           </div>
 
