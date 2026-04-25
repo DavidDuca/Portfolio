@@ -273,7 +273,7 @@
    Android "Desktop site" reports ~980–1280px so it lands here
    and shows the photo correctly on the right.                    */
 @media (max-width: 1024px) {
-  .hero { padding-top: 100px; }
+  .hero { padding-top: 100px; max-height: 700px;}
   .grid { gap: 36px; }
   .photoWrap { max-width: 340px; }
   /* Pull badges inward so they don't clip */
