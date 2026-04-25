@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { FaLayerGroup, FaRegPaperPlane, FaFacebookF, FaLinkedinIn, FaGithub, FaCode, FaNetworkWired } from "react-icons/fa6";
-import davidImg from "@/assets/david.jpg";
+import davidImg from "@/assets/david.png";
 import styles from "./Hero.module.css";
 
 const roles = [
