@@ -4,6 +4,8 @@ import Modal from "../Modal/Modal";
 import styles from "./Projects.module.css";
 import whisprDesktop from "../../assets/projects/whispr-desktop.png";
 import whisprMobile from "../../assets/projects/whispr-mobile.png";
+import seedlynxDesktop from "../../assets/projects/seedlynx-desktop.png";
+import seedlynxMobile from "../../assets/projects/seedlynx-mobile.png";
 
 const projects = [
   {
@@ -20,8 +22,8 @@ const projects = [
     name: "SeedLynx",
     type: "Web Development & Multimedia Agency · Startup",
     bg: "sl",
-    image:       null,
-    mobileImage: null,
+    image:       seedlynxDesktop,   // ← 1280×800 desktop screenshot
+    mobileImage: seedlynxMobile,   // ← 390×844 mobile screenshot
     desc: "A professional startup dedicated to high-impact web development and professional multimedia services. We help businesses streamline their operations and enhance their brand presence with custom web platforms, booking systems, and creative storytelling.",
     stack: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
     url: "https://seedlynx.com",
@@ -34,7 +36,7 @@ const projects = [
     mobileImage: whisprMobile,   // ← 390×844 mobile screenshot
     desc: "A real-time messaging app inspired by NGL with safety in mind — designed to catch abusive senders. Built on WebSockets for near-instant delivery, it features clean threaded conversations, presence, and sender pinpoint location via GPS, browser metadata, and network heuristics.",
     stack: ["React", "WebSocket", "Node.js", "Express", "JWT"],
-    url: "https://whispr.app",
+    url: "https://ngl-link-jxwvyzq.vercel.app/index.html",
   },
   {
     name: "RiceWise",
