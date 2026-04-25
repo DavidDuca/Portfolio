@@ -6,14 +6,16 @@ import whisprDesktop from "../../assets/projects/whispr-desktop.png";
 import whisprMobile from "../../assets/projects/whispr-mobile.png";
 import seedlynxDesktop from "../../assets/projects/seedlynx-desktop.png";
 import seedlynxMobile from "../../assets/projects/seedlynx-mobile.png";
+import grillsyncDesktop from "../../assets/projects/grillsync-desktop.png";
+import grillsyncMobile from "../../assets/projects/grillsync-mobile.png";
 
 const projects = [
   {
     name: "GrillSync",
     type: "Restaurant Management · Analytics",
     bg: "gs",
-    image:       null,   // ← 1280×800 desktop screenshot
-    mobileImage: null,   // ← 390×844  mobile screenshot
+    image:       grillsyncDesktop,   // ← 1280×800 desktop screenshot
+    mobileImage: grillsyncMobile,   // ← 390×844  mobile screenshot
     desc: "A streamlined restaurant and grill management platform handling order tracking, inventory monitoring, and staff coordination in real time. Designed to minimize kitchen chaos and maximize service efficiency during peak hours.",
     stack: ["React", "Node.js", "Express", "Tailwind CSS", "Socket.io"],
     url: "https://grillsync.app",
