@@ -1,119 +1,378 @@
+/* ================================================================
+   Projects.module.css
+   Device mockup cards — 16 : 9 banner with laptop + phone shell
+================================================================ */
+
+/* ── Section wrapper ────────────────────────────────────────── */
 .projects {
   background: hsl(var(--bg-1));
-  border-top: 1px solid hsl(var(--border-c) / 0.05);
+  border-top:    1px solid hsl(var(--border-c) / 0.05);
   border-bottom: 1px solid hsl(var(--border-c) / 0.05);
-  padding-top: 96px;
+  padding-top:    96px;
   padding-bottom: 96px;
 }
 
+/* ── 2-col grid ─────────────────────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
+  gap: 28px;
 }
 
+/* ── Card ───────────────────────────────────────────────────── */
 .card {
   background: hsl(var(--bg-2));
   border: 1px solid hsl(var(--border-c) / 0.075);
   border-radius: var(--r-lg);
   overflow: hidden;
-  transition: all 0.3s;
   display: flex;
   flex-direction: column;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 .card:hover {
-  transform: translateY(-6px);
-  border-color: hsl(var(--cyan) / 0.3);
-  box-shadow: 0 30px 70px hsl(var(--bg-0) / 0.6);
+  transform: translateY(-5px);
+  border-color: hsl(var(--cyan) / 0.28);
+  box-shadow: 0 28px 64px hsl(var(--bg-0) / 0.55);
 }
 
+/* ── Banner — enforces 16 : 9 ───────────────────────────────── */
 .banner {
   position: relative;
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
-.bg {
+
+/* Gradient fallback (always rendered under everything) */
+.bgGrad {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  z-index: 0;
 }
-.bg_gs { background: linear-gradient(135deg, hsl(15 55% 45%), hsl(35 60% 38%)); }
-.bg_sl { background: linear-gradient(135deg, hsl(140 50% 35%), hsl(180 50% 30%)); }
-.bg_wh { background: linear-gradient(135deg, hsl(254 50% 45%), hsl(220 55% 38%)); }
-.bg_rw { background: linear-gradient(135deg, hsl(95 40% 38%), hsl(50 55% 42%)); }
+.bg_gs { background: linear-gradient(135deg, hsl(15 55% 30%), hsl(35 50% 22%)); }
+.bg_sl { background: linear-gradient(135deg, hsl(150 40% 20%), hsl(180 40% 16%)); }
+.bg_wh { background: linear-gradient(135deg, hsl(323, 91%, 46%), hsl(32, 87%, 59%)); }
+.bg_rw { background: linear-gradient(135deg, hsl(95 35% 22%), hsl(50 45% 20%)); }
 
-.banner::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, hsl(var(--bg-2)) 100%);
-}
-
-.bannerTxt {
+/* ── Device mockup container ────────────────────────────────── */
+.protoWrap {
   position: absolute;
-  left: 22px;
-  bottom: 18px;
-  z-index: 2;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 14px 0;
+  gap: 12px;
 }
+
+/* ── Laptop shell ───────────────────────────────────────────── */
+.laptop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Laptop takes ~65% of the banner width */
+  width: 64%;
+  flex-shrink: 0;
+}
+
+.laptopTop {
+  width: 100%;
+  background: #1c1c1e;
+  border-radius: 6px 6px 0 0;
+  border: 1.5px solid #3a3a3c;
+  border-bottom: none;
+  padding: 5px 5px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.laptopCam {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3a3a3c;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+.laptopScreen {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.laptopBase {
+  width: 108%;          /* wider than top — realistic taper */
+  height: 9px;
+  background: #242426;
+  border-radius: 0 0 5px 5px;
+  border: 1.5px solid #3a3a3c;
+  border-top: 1.5px solid #4a4a4c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.laptopNotch {
+  width: 26%;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: #1c1c1e;
+  border: 1px solid #3a3a3c;
+  border-top: none;
+}
+
+/* ── Phone shell ────────────────────────────────────────────── */
+.phone {
+  /* Phone sits a little lower, overlapping laptop base slightly */
+  margin-top: 16px;
+  width: 18%;
+  flex-shrink: 0;
+}
+
+.phoneShell {
+  width: 100%;
+  background: #1c1c1e;
+  border: 1.5px solid #3a3a3c;
+  border-radius: 8px;
+  padding: 5px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.phoneCam {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3a3a3c;
+  flex-shrink: 0;
+}
+
+.phoneScreen {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Prototype image (fills screen area) ────────────────────── */
+.protoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ── Placeholder inner content — laptop screen ──────────────── */
+.phInner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: hsl(var(--bg-2));
+  padding: 8px;
+}
+
+.phIconWrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px dashed hsl(var(--border-c) / 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.phIcon {
+  font-size: .75rem;
+  color: hsl(var(--text-2));
+  opacity: .55;
+}
+
+.phLabel {
+  font-size: clamp(.35rem, 1vw, .6rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: hsl(var(--text-1));
+  text-align: center;
+  line-height: 1.3;
+}
+
+.phHint {
+  font-size: clamp(.28rem, .8vw, .5rem);
+  color: hsl(var(--text-2));
+  text-align: center;
+  opacity: .7;
+}
+
+.phHint code {
+  color: hsl(var(--cyan));
+  font-family: 'Courier New', monospace;
+}
+
+/* ── Placeholder inner content — phone screen ───────────────── */
+/*
+ * Phone screen is much narrower — use a simpler 3-line stack
+ * with a smaller icon, label, and size hint.
+ */
+.phInnerPhone {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: hsl(var(--bg-2));
+  padding: 6px 4px;
+}
+
+.phIconSm {
+  font-size: clamp(.55rem, 1.4vw, .9rem);
+  color: hsl(var(--text-2));
+  opacity: .45;
+  flex-shrink: 0;
+}
+
+.phLabelPhone {
+  font-size: clamp(.28rem, .75vw, .52rem);
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: hsl(var(--text-2));
+  text-align: center;
+  opacity: .7;
+  line-height: 1.2;
+}
+
+.phHintPhone {
+  font-size: clamp(.24rem, .6vw, .44rem);
+  color: hsl(var(--text-2));
+  text-align: center;
+  opacity: .45;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── Banner bottom overlay ──────────────────────────────────── */
+.bannerOverlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  /* Fade from transparent to the card surface colour */
+  background: linear-gradient(
+    to top,
+    hsl(var(--bg-2)) 0%,
+    hsl(var(--bg-2) / .72) 42%,
+    transparent 100%
+  );
+  padding: 20px 22px 14px;
+}
+
+.bannerMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.bannerType {
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: hsl(var(--cyan-light));
+}
+
 .bannerName {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   font-weight: 800;
+  letter-spacing: -.02em;
   color: hsl(var(--text-0));
-  letter-spacing: -0.02em;
-}
-.bannerType {
-  font-size: 0.78rem;
-  color: hsl(var(--text-1));
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: 4px;
+  line-height: 1.1;
 }
 
-.body { padding: 24px 26px 28px; display: flex; flex-direction: column; flex: 1; }
-
-.title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: hsl(var(--text-0));
-  margin-bottom: 10px;
-}
-.desc {
-  font-size: 0.88rem;
-  color: hsl(var(--text-2));
-  line-height: 1.7;
-  margin-bottom: 18px;
+/* ── Card body ──────────────────────────────────────────────── */
+.body {
+  padding: 18px 22px 24px;
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  gap: 14px;
 }
 
-.stack { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.desc {
+  font-size: .86rem;
+  color: hsl(var(--text-2));
+  line-height: 1.72;
+  flex: 1;
+  margin: 0;
+}
+
+/* ── Tech stack ─────────────────────────────────────────────── */
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 .stk {
-  font-size: 0.72rem;
-  padding: 5px 11px;
-  background: hsl(var(--cyan) / 0.08);
+  font-size: .7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: hsl(var(--cyan) / 0.07);
   color: hsl(var(--cyan-light));
-  border: 1px solid hsl(var(--cyan) / 0.2);
+  border: 1px solid hsl(var(--cyan) / 0.18);
   border-radius: 6px;
-  font-weight: 500;
+  letter-spacing: .02em;
+  transition: background .2s, border-color .2s;
+}
+.stk:hover {
+  background: hsl(var(--cyan) / 0.14);
+  border-color: hsl(var(--cyan) / 0.35);
 }
 
-.btns { display: flex; gap: 10px; }
-.btnDemo, .btnGh {
+/* ── Buttons ────────────────────────────────────────────────── */
+.btns {
+  display: flex;
+  gap: 9px;
+}
+
+.btnDemo,
+.btnGh {
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 11px;
-  font-size: 0.82rem;
+  gap: 7px;
+  padding: 10px 14px;
+  font-size: .82rem;
   font-weight: 600;
   border-radius: var(--r-sm);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all .2s;
   font-family: 'DM Sans', sans-serif;
   border: 1px solid;
+  white-space: nowrap;
 }
+
 .btnDemo {
   background: hsl(var(--cyan));
   color: hsl(var(--bg-0));
@@ -121,18 +380,55 @@
 }
 .btnDemo:hover {
   background: hsl(var(--cyan-light));
-  box-shadow: 0 6px 18px hsl(var(--cyan) / 0.3);
+  box-shadow: 0 5px 16px hsl(var(--cyan) / 0.28);
 }
+
 .btnGh {
   background: transparent;
-  color: hsl(var(--text-0));
-  border-color: hsl(var(--border-c) / 0.18);
+  color: hsl(var(--text-1));
+  border-color: hsl(var(--border-c) / 0.16);
+  text-decoration: none;
 }
 .btnGh:hover {
-  border-color: hsl(var(--cyan) / 0.4);
+  border-color: hsl(var(--cyan) / 0.38);
+  color: hsl(var(--cyan));
   background: hsl(var(--cyan) / 0.05);
 }
 
-@media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; }
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+
+/* Tablet — stack to single column */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+}
+
+/* Large phone — tighten spacing */
+@media (max-width: 600px) {
+  .projects {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .bannerName { font-size: 1.05rem; }
+  .bannerType { font-size: .6rem; }
+
+  .btns { flex-direction: column; }
+  .btnDemo,
+  .btnGh { flex: unset; width: 100%; }
+
+  /* Simplify device mockup on small screens — hide phone companion */
+  .phone { display: none; }
+  .laptop { width: 76%; }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .laptop { width: 88%; }
+  .body { padding: 14px 16px 20px; }
 }
