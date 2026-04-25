@@ -423,12 +423,13 @@
   .btnGh { flex: unset; width: 100%; }
 
   /* Simplify device mockup on small screens — hide phone companion */
-  .phone { display: none; }
-  .laptop { width: 76%; }
+  .phone { display: block; }
+  .laptop { width: 80%; }
 }
 
 /* Very small screens */
 @media (max-width: 380px) {
-  .laptop { width: 88%; }
+  .laptop { width: 70%; }
+  .phone {width:28%;}
   .body { padding: 14px 16px 20px; }
 }
