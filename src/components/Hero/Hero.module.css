@@ -1,5 +1,9 @@
+/* ================================================================
+   Hero.module.css  —  Fixed photo visibility on Android / tablets
+================================================================ */
+
 .hero {
-  padding-top:0px;
+  padding-top: 0px;
   padding-bottom: 80px;
   background:
     radial-gradient(ellipse at top left, hsl(var(--cyan) / 0.08), transparent 50%),
@@ -10,6 +14,7 @@
   align-items: center;
 }
 
+/* ── Two-column desktop layout ───────────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -17,6 +22,7 @@
   align-items: center;
 }
 
+/* ── Left: text ──────────────────────────────────────────────── */
 .greeting {
   font-family: 'Outfit', sans-serif;
   color: hsl(var(--cyan));
@@ -31,7 +37,6 @@
   font-size: clamp(2.4rem, 6vw, 4.2rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: hsl(var(--text-0));
   line-height: 1.05;
   margin-bottom: 18px;
   background: linear-gradient(135deg, hsl(var(--text-0)) 30%, hsl(var(--cyan-light)));
@@ -51,7 +56,7 @@
   flex-wrap: wrap;
   min-height: 2em;
 }
-.prefix { color: hsl(var(--text-2)); font-weight: 400; }
+.prefix   { color: hsl(var(--text-2)); font-weight: 400; }
 .typeText { color: hsl(var(--purple-light)); font-weight: 600; }
 .cursor {
   display: inline-block;
@@ -62,8 +67,8 @@
   vertical-align: middle;
 }
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
+  0%,  50%       { opacity: 1; }
+  50.01%, 100%   { opacity: 0; }
 }
 
 .bio {
@@ -74,13 +79,15 @@
   max-width: 540px;
 }
 
+/* Buttons */
 .btns {
   display: flex;
   gap: 14px;
   margin-bottom: 36px;
   flex-wrap: wrap;
 }
-.btnPrimary, .btnOutline {
+.btnPrimary,
+.btnOutline {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -91,6 +98,7 @@
   font-family: 'DM Sans', sans-serif;
   transition: all 0.25s;
   cursor: pointer;
+  text-decoration: none;
 }
 .btnPrimary {
   background: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--cyan-light)));
@@ -111,7 +119,13 @@
   background: hsl(var(--cyan) / 0.05);
 }
 
-.socials { display: flex; align-items: center; gap: 10px; margin-bottom: 36px; }
+/* Socials */
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
 .socLabel {
   font-size: 0.78rem;
   color: hsl(var(--text-3));
@@ -131,6 +145,7 @@
   color: hsl(var(--text-1));
   font-size: 0.95rem;
   transition: all 0.2s;
+  text-decoration: none;
 }
 .socBtn:hover {
   color: hsl(var(--cyan));
@@ -138,6 +153,7 @@
   transform: translateY(-2px);
 }
 
+/* Stats */
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -160,10 +176,13 @@
   margin-top: 4px;
 }
 
+/* ── Right: photo ────────────────────────────────────────────── */
 .right {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* ✅ NEVER hidden — was `display:none` at ≤1024px, that killed
+        the photo on Android desktop mode (reports ~980px viewport) */
 }
 
 .photoWrap {
@@ -171,20 +190,25 @@
   width: 100%;
   max-width: 420px;
 }
+
 .photoCard {
   position: relative;
   border-radius: var(--r-xl);
   overflow: hidden;
   border: 1px solid hsl(var(--border-c) / 0.1);
-  background: linear-gradient(135deg, hsl(var(--cyan) / 0.15), hsl(var(--purple) / 0.15));
-  padding: 0px;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--cyan) / 0.15),
+    hsl(var(--purple) / 0.15)
+  );
   box-shadow: 0 30px 80px hsl(var(--bg-0) / 0.7);
-
+  backdrop-filter: blur(20px);
 }
+
 .photoInner {
   border-radius: calc(var(--r-xl) - 4px);
   overflow: hidden;
-  aspect-ratio: 4/5;
+  aspect-ratio: 4 / 5;
 }
 .photoInner img {
   width: 100%;
@@ -193,6 +217,7 @@
   display: block;
 }
 
+/* ── Floating badges ─────────────────────────────────────────── */
 .badge {
   position: absolute;
   display: flex;
@@ -205,21 +230,26 @@
   box-shadow: 0 14px 40px hsl(var(--bg-0) / 0.6);
   backdrop-filter: blur(10px);
   animation: floaty 4s ease-in-out infinite;
+  /* Prevent badges from creating horizontal scroll on small frames */
+  white-space: nowrap;
 }
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50%       { transform: translateY(-8px); }
 }
-.badge1 { top: 30px; left: -20px; }
+.badge1 { top: 30px;  left: -20px; }
 .badge2 { bottom: 40px; right: -20px; animation-delay: 1.5s; }
 
 .badgeIco {
-  width: 38px; height: 38px;
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.05rem;
 }
-.bicC { background: hsl(var(--cyan) / 0.13); color: hsl(var(--cyan)); }
+.bicC { background: hsl(var(--cyan)   / 0.13); color: hsl(var(--cyan)); }
 .bicP { background: hsl(var(--purple) / 0.13); color: hsl(var(--purple-light)); }
 
 .badgeTxt strong {
@@ -234,15 +264,53 @@
   color: hsl(var(--text-2));
 }
 
-@media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr; }
-  .right { display: none; }
-  .hero { padding-top: 80px; }
+/* ================================================================
+   RESPONSIVE BREAKPOINTS
+================================================================ */
 
-}
-@media (max-width: 768px) {
-  .stats { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  .btns { flex-direction: column; }
-  .btnPrimary, .btnOutline { width: 100%; justify-content: center; }
+/* ── Tablet / Android desktop mode (768px – 1024px) ──────────
+   Grid stays 2 columns. Photo visible. Just tighten spacing.
+   Android "Desktop site" reports ~980–1280px so it lands here
+   and shows the photo correctly on the right.                    */
+@media (max-width: 1024px) {
   .hero { padding-top: 100px; }
+  .grid { gap: 36px; }
+  .photoWrap { max-width: 340px; }
+  /* Pull badges inward so they don't clip */
+  .badge1 { left: -80px; }
+  .badge2 { right: -20px; }
+}
+
+/* ── Mobile portrait (≤ 768px) ────────────────────────────────
+   True mobile only. Single column, photo hidden, badges hidden.
+   When user switches to "Desktop site" the viewport jumps above
+   768px so this block no longer applies — photo reappears.       */
+@media (max-width: 768px) {
+  .hero { padding-top: 110px; padding-bottom: 60px; }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .right { display: none; }
+
+  /* Badges hidden (only relevant when photo is shown anyway) */
+  .badge { display: none; }
+
+  /* Stats: 2×2 grid */
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  /* Buttons: full-width stack */
+  .btns { flex-direction: column; }
+  .btnPrimary,
+  .btnOutline { width: 100%; justify-content: center; }
+}
+
+/* ── Small phones (≤ 480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .name { font-size: 2.2rem; }
 }
