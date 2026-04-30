@@ -28,7 +28,7 @@ const projects = [
     mobileImage: seedlynxMobile,   // ← 390×844 mobile screenshot
     desc: "A professional startup dedicated to high-impact web development and professional multimedia services. We help businesses streamline their operations and enhance their brand presence with custom web platforms, booking systems, and creative storytelling.",
     stack: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
-    url: "https://seedlynx.com",
+    url: "https://seedlynx.vercel.app",
   },
   {
     name: "Whispr",
@@ -177,7 +177,7 @@ const Projects = () => {
                     <FaPlay /> Live Demo
                   </button>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/DavidDuca"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.btnGh}

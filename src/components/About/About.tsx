@@ -119,7 +119,7 @@ const About = () => {
                 </div>
               </div>
               <div className={styles.cardBody}>
-                As co-founder of <a href="https://seedlynx.com" target="_blank" rel="noopener noreferrer" className={styles.link}>SeedLynx</a>, I help shape our vision by building digital solutions that help businesses streamline their operations and improve service efficiency. I lead full-stack development from designing user-friendly interfaces to managing the infrastructure that keeps our services running smoothly.
+                As co-founder of <a href="https://seedlynx.vercel.app" target="_blank" rel="noopener noreferrer" className={styles.link}>SeedLynx</a>, I help shape our vision by building digital solutions that help businesses streamline their operations and improve service efficiency. I lead full-stack development from designing user-friendly interfaces to managing the infrastructure that keeps our services running smoothly.
               </div>
             </div>
 
