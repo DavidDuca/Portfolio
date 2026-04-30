@@ -64,9 +64,9 @@ const Hero = () => {
 
             <div className={styles.socials}>
               <span className={styles.socLabel}>Follow</span>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socBtn} aria-label="Facebook"><FaFacebookF /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socBtn} aria-label="LinkedIn"><FaLinkedinIn /></a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.socBtn} aria-label="GitHub"><FaGithub /></a>
+              <a href="https://www.facebook.com/davidrupert.cabreraduca.1" target="_blank" rel="noopener noreferrer" className={styles.socBtn} aria-label="Facebook"><FaFacebookF /></a>
+              <a href="https://www.linkedin.com/in/david-rupert-duca-578a96388/" target="_blank" rel="noopener noreferrer" className={styles.socBtn} aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a href="https://github.com/DavidDuca" target="_blank" rel="noopener noreferrer" className={styles.socBtn} aria-label="GitHub"><FaGithub /></a>
             </div>
 
             <div className={styles.stats}>

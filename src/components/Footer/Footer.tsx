@@ -19,14 +19,14 @@ const Footer = () => {
             ]} />
             <Col title="Projects" items={[
               { l: "GrillSync", h: "#projects" },
-              { l: "SeedLynx ↗", h: "https://seedlynx.com", ext: true },
+              { l: "SeedLynx ↗", h: "https://seedlynx.vercel.app", ext: true },
               { l: "Whispr", h: "#projects" },
               { l: "RiceWise", h: "#projects" },
             ]} />
             <Col title="Connect" items={[
-              { l: "GitHub ↗", h: "https://github.com", ext: true },
-              { l: "LinkedIn ↗", h: "https://linkedin.com", ext: true },
-              { l: "Facebook ↗", h: "https://facebook.com", ext: true },
+              { l: "GitHub ↗", h: "https://github.com/DavidDuca", ext: true },
+              { l: "LinkedIn ↗", h: "https://www.linkedin.com/in/david-rupert-duca-578a96388/", ext: true },
+              { l: "Facebook ↗", h: "https://www.facebook.com/davidrupert.cabreraduca.1", ext: true },
             ]} />
           </div>
         </div>
@@ -36,9 +36,9 @@ const Footer = () => {
             © {yr} <em>David Rupert Duca</em>. All rights reserved.
           </div>
           <div className={styles.soc}>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://github.com/DavidDuca" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/david-rupert-duca-578a96388/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
+            <a href="https://www.facebook.com/davidrupert.cabreraduca.1" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
           </div>
         </div>
       </div>
