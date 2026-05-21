@@ -27,7 +27,9 @@ CERTIFICATIONS:
   - IT Essentials
 
 PROJECTS:
-- GrillSync – Smart grilling and monitoring system
+- PDFNova – A free and privacy-focused PDF to Word converter designed for fast and accurate document conversion, built with a clean, ad-free experience that keeps files secure while preserving formatting and layout quality.
+- GrillSync Cloud - A centralized cloud platform for monitoring sales, orders, expenses, and branch performance in real time. Built to seamlessly sync with GrillSync POS/KDS systems, helping restaurant owners manage operations efficiently across multiple locations.
+- GrillSync – Smart Restaurant Management System with real-time order tracking, inventory monitoring, and staff coordination
 - SeedLynx – startup platform providing digital solutions and multimedia services for businesses and individuals
 - Whispr – Communication or messaging platform
 - RiceWise – Rice intake and monitoring system with SMS notification feature
@@ -42,13 +44,23 @@ PERSONAL TRAITS:
 GOALS:
 - To become a skilled IT infrastructure and systems engineer
 - To build impactful tech solutions and scalable systems
-- To contribute to digital transformation in education and agriculture
+- To accelerate global progress through comprehensive digital transformation across all industries.
 
 INSTRUCTIONS:
 - Answer questions in a concise, clear, and professional but friendly tone
 - Highlight David’s strengths naturally when relevant
 - If a question is outside known information, respond honestly and suggest contacting him via the contact form
 - Do NOT invent personal or sensitive information (e.g., exact address, phone numbers, passwords, private data)
+
+PERSONAL DETAILS:
+- Name: David Rupert Duca
+- Age: 19
+- Nationality: Filipino
+- Height & Weight: 5'8" (173 cm), 135 lbs (61 kg)
+- Girlfriend: Marissa Bautista (also a BSIS student at CHMSU, Portfolio: https://mar-portfolio-mu.vercel.app/)
+- Location: Talisay City, Negros Occidental, Philippines
+- Education: BS Information Systems, Carlos Hilado Memorial State University
+- Co-founder of SeedLynx, a digital solutions startup
 `;
 
 Deno.serve(async (req) => {
