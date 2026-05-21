@@ -10,22 +10,24 @@ import grillsyncDesktop from "../../assets/projects/grillsync-desktop.png";
 import grillsyncMobile from "../../assets/projects/grillsync-mobile.png";
 import grillsyncCloudDesktop from "../../assets/projects/grillsynccloud-desktop.png";
 import grillsyncCloudMobile from "../../assets/projects/grillsynccloud-mobile.png";
+import pdfnDesktop from "../../assets/projects/pdfnova-desktop.png";
+import pdfnMobile from "../../assets/projects/pdfnova-mobile.png";
 
 const projects = [
   {
     name: "PDFNova",
     type: "PDF to Docs · Utility Tool",
-    bg: "gc",
-    image:       grillsyncCloudDesktop,   // ← 1280×800 desktop screenshot
-    mobileImage: grillsyncCloudMobile,   // ← 390×844  mobile screenshot
-    desc: "A centralized cloud platform for monitoring sales, orders, expenses, and branch performance in real time. Built to seamlessly sync with GrillSync POS/KDS systems, helping restaurant owners manage operations efficiently across multiple locations.",
-    stack: ["Next.js", "Node.js", "REST API", "Tailwind CSS", "MongoDB"],
-    url: "https://grillsync-cloud-platfrom-v3-3bct.vercel.app/",
+    bg: "pdfn",
+    image:       pdfnDesktop,   // ← 1280×800 desktop screenshot
+    mobileImage: pdfnMobile,   // ← 390×844  mobile screenshot
+    desc: "A free and privacy-focused PDF to Word converter designed for fast and accurate document conversion. Built with a clean, ad-free experience that keeps files secure while preserving formatting and layout quality.",
+    stack: ["React", "Node.js", "Flask", "Tailwind CSS"],
+    url: "https://usepdfnova.vercel.app/",
   },
   {
     name: "GrillSync Cloud",
     type: "Restaurant Management · Analytics",
-    bg: "gs",
+    bg: "gc",
     image:       grillsyncCloudDesktop,   // ← 1280×800 desktop screenshot
     mobileImage: grillsyncCloudMobile,   // ← 390×844  mobile screenshot
     desc: "A centralized cloud platform for monitoring sales, orders, expenses, and branch performance in real time. Built to seamlessly sync with GrillSync POS/KDS systems, helping restaurant owners manage operations efficiently across multiple locations.",
