@@ -8,8 +8,30 @@ import seedlynxDesktop from "../../assets/projects/seedlynx-desktop.png";
 import seedlynxMobile from "../../assets/projects/seedlynx-mobile.png";
 import grillsyncDesktop from "../../assets/projects/grillsync-desktop.png";
 import grillsyncMobile from "../../assets/projects/grillsync-mobile.png";
+import grillsyncCloudDesktop from "../../assets/projects/grillsynccloud-desktop.png";
+import grillsyncCloudMobile from "../../assets/projects/grillsynccloud-mobile.png";
 
 const projects = [
+  {
+    name: "PDFNova",
+    type: "PDF to Docs · Utility Tool",
+    bg: "gc",
+    image:       grillsyncCloudDesktop,   // ← 1280×800 desktop screenshot
+    mobileImage: grillsyncCloudMobile,   // ← 390×844  mobile screenshot
+    desc: "A centralized cloud platform for monitoring sales, orders, expenses, and branch performance in real time. Built to seamlessly sync with GrillSync POS/KDS systems, helping restaurant owners manage operations efficiently across multiple locations.",
+    stack: ["Next.js", "Node.js", "REST API", "Tailwind CSS", "MongoDB"],
+    url: "https://grillsync-cloud-platfrom-v3-3bct.vercel.app/",
+  },
+  {
+    name: "GrillSync Cloud",
+    type: "Restaurant Management · Analytics",
+    bg: "gs",
+    image:       grillsyncCloudDesktop,   // ← 1280×800 desktop screenshot
+    mobileImage: grillsyncCloudMobile,   // ← 390×844  mobile screenshot
+    desc: "A centralized cloud platform for monitoring sales, orders, expenses, and branch performance in real time. Built to seamlessly sync with GrillSync POS/KDS systems, helping restaurant owners manage operations efficiently across multiple locations.",
+    stack: ["Next.js", "Node.js", "REST API", "Tailwind CSS", "MongoDB"],
+    url: "https://grillsync-cloud-platfrom-v3-3bct.vercel.app/",
+  },
   {
     name: "GrillSync",
     type: "Restaurant Management · Analytics",
@@ -18,7 +40,7 @@ const projects = [
     mobileImage: grillsyncMobile,   // ← 390×844  mobile screenshot
     desc: "A streamlined restaurant and grill management platform handling order tracking, inventory monitoring, and staff coordination in real time. Designed to minimize kitchen chaos and maximize service efficiency during peak hours.",
     stack: ["React", "Node.js", "Express", "Tailwind CSS", "Socket.io"],
-    url: "https://grillsync.app",
+    url: "No live demo available. designed for localhost",
   },
   {
     name: "SeedLynx",
@@ -48,7 +70,7 @@ const projects = [
     mobileImage: null,
     desc: "An intelligent rice production advisory system providing data-driven yield optimization, weather integration, and crop health recommendations tailored specifically for Philippine rice farming practices.",
     stack: ["HTML", "Tailwind CSS", "PHP", "MySQL"],
-    url: "https://ricewise.app",
+    url: "No Live Demo Available.",
   },
 ];
 

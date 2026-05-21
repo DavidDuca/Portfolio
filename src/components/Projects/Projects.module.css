@@ -53,7 +53,7 @@
 .bg_sl { background: linear-gradient(135deg, hsl(234, 66%, 12%), hsl(180, 78%, 45%)); }
 .bg_wh { background: linear-gradient(135deg, hsl(323, 91%, 46%), hsl(32, 87%, 59%)); }
 .bg_rw { background: linear-gradient(135deg, hsl(95 35% 22%), hsl(50 45% 20%)); }
-
+.bg_gc { background: linear-gradient(135deg, hsl(0, 1%, 13%), hsla(32, 73%, 49%, 0.774)); }
 /* ── Device mockup container ────────────────────────────────── */
 .protoWrap {
   position: absolute;
