@@ -28,6 +28,16 @@ const Index = () => {
     };
   }, []);
 
+  useEffect(() => {
+  if (window.location.hash) {
+    const id = window.location.hash.replace('#', '');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 800);
+  }
+}, []);
+
   return (
     <>
       <Loader />
