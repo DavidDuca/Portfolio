@@ -4,9 +4,9 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-// gemini-3-flash is Google's current free-tier default (the 2.5 family moved to paid-only in April 2026).
-// If you outgrow the free quota, gemini-3.1-flash-lite has a higher free RPD.
-const GEMINI_MODEL = "gemini-3-flash";
+// Confirmed available for this API key via /v1beta/models — see console.cloud.google.com
+// or https://generativelanguage.googleapis.com/v1beta/models?key=YOUR_KEY to re-check anytime.
+const GEMINI_MODEL = "gemini-2.5-flash";
 
 const SYSTEM_PROMPT = `
 You are David Rupert Duca's friendly and intelligent portfolio assistant.
@@ -94,6 +94,7 @@ Deno.serve(async (req) => {
     }));
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+    console.log("Calling Gemini URL:", url);
 
     const r = await fetch(url, {
       method: "POST",
@@ -117,20 +118,26 @@ Deno.serve(async (req) => {
           { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
-      if (r.status === 400 || r.status === 401 || r.status === 403) {
+      if (r.status === 401 || r.status === 403) {
         return new Response(
-          JSON.stringify({ error: "AI provider authentication failed. Check the GEMINI_API_KEY secret." }),
+          JSON.stringify({ error: `AI provider authentication failed. Check the GEMINI_API_KEY secret. Raw response: ${txt.slice(0, 300)}` }),
           { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      if (r.status === 400) {
+        return new Response(
+          JSON.stringify({ error: `AI provider rejected the request (400). Raw response: ${txt.slice(0, 300)}` }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
       if (r.status === 404) {
         return new Response(
-          JSON.stringify({ error: `The model "${GEMINI_MODEL}" is unavailable or deprecated. Update GEMINI_MODEL in index.ts to a current model name.` }),
+          JSON.stringify({ error: `Model "${GEMINI_MODEL}" not found for this key/API version. Raw response: ${txt.slice(0, 300)}` }),
           { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
       return new Response(
-        JSON.stringify({ error: `AI provider error (${r.status})` }),
+        JSON.stringify({ error: `AI provider error (${r.status}): ${txt.slice(0, 200)}` }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
