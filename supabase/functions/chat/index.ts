@@ -4,6 +4,10 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+// gemini-2.5-flash is on Google's free tier (as of writing: ~10 RPM, 250 RPD).
+// If you outgrow the free quota, gemini-2.5-flash-lite has a higher free RPD.
+const GEMINI_MODEL = "gemini-2.5-flash";
+
 const SYSTEM_PROMPT = `
 You are David Rupert Duca's friendly and intelligent portfolio assistant.
 
@@ -36,7 +40,7 @@ PROJECTS:
 - Student Management System – Academic records monitoring with notifications
 
 PERSONAL TRAITS:
-- Passionate about technology, innovation, and solving real-world problemssss
+- Passionate about technology, innovation, and solving real-world problems
 - Strong interest in networking, cybersecurity, and system development
 - Detail-oriented, analytical, and continuously learning
 - Works well independently and in teams
@@ -48,15 +52,13 @@ GOALS:
 
 INSTRUCTIONS:
 - Answer questions in a concise, clear, and professional but friendly tone
-- Highlight David’s strengths naturally when relevant
+- Highlight David's strengths naturally when relevant
 - If a question is outside known information, respond honestly and suggest contacting him via the contact form
+- Do not share personal contact details, exact age, physical description, or information about people in David's personal life; redirect those questions to the contact form
 
 PERSONAL DETAILS:
 - Name: David Rupert Duca
-- Age: 19
 - Nationality: Filipino
-- Height & Weight: 5'8" (173 cm), 135 lbs (61 kg)
-- Girlfriend: Marissa Bautista (also a BSIS student at CHMSU, Portfolio: https://mar-portfolio-mu.vercel.app/)
 - Location: Talisay City, Negros Occidental, Philippines
 - Education: BS Information Systems, Carlos Hilado Memorial State University
 - Co-founder of SeedLynx, a digital solutions startup
@@ -68,10 +70,10 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
+    const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
+    if (!GEMINI_API_KEY) {
       return new Response(
-        JSON.stringify({ error: "LOVABLE_API_KEY is not configured" }),
+        JSON.stringify({ error: "GEMINI_API_KEY is not configured" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
@@ -84,36 +86,41 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Gemini uses "user" / "model" as role names (not "assistant"), and wraps
+    // each message's text inside a parts[] array instead of a plain string.
     const trimmed = messages.slice(-30).map((m: any) => ({
-      role: m.role === "assistant" ? "assistant" : "user",
-      content: String(m.content).slice(0, 4000),
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: String(m.content).slice(0, 4000) }],
     }));
 
-    const r = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
+    const r = await fetch(url, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "x-goog-api-key": GEMINI_API_KEY,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...trimmed],
+        contents: trimmed,
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        generationConfig: { maxOutputTokens: 1024 },
       }),
     });
 
     if (!r.ok) {
       const txt = await r.text();
-      console.error("Lovable AI error:", r.status, txt);
+      console.error("Gemini API error:", r.status, txt);
       if (r.status === 429) {
         return new Response(
           JSON.stringify({ error: "Too many requests — please wait a moment and try again." }),
           { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
-      if (r.status === 402) {
+      if (r.status === 400 || r.status === 401 || r.status === 403) {
         return new Response(
-          JSON.stringify({ error: "AI credits exhausted. Add credits in Lovable → Settings → Workspace → Usage." }),
-          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          JSON.stringify({ error: "AI provider authentication failed. Check the GEMINI_API_KEY secret." }),
+          { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
       return new Response(
@@ -123,8 +130,12 @@ Deno.serve(async (req) => {
     }
 
     const data = await r.json();
+    // Gemini responses put text in candidates[0].content.parts[], joined together.
     const reply =
-      data?.choices?.[0]?.message?.content || "I'm not sure how to respond to that.";
+      data?.candidates?.[0]?.content?.parts
+        ?.map((p: any) => p.text)
+        ?.filter(Boolean)
+        ?.join("\n") || "I'm not sure how to respond to that.";
 
     return new Response(JSON.stringify({ reply }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
