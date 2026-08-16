@@ -4,9 +4,9 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-// gemini-2.5-flash is on Google's free tier (as of writing: ~10 RPM, 250 RPD).
-// If you outgrow the free quota, gemini-2.5-flash-lite has a higher free RPD.
-const GEMINI_MODEL = "gemini-2.5-flash";
+// gemini-3-flash is Google's current free-tier default (the 2.5 family moved to paid-only in April 2026).
+// If you outgrow the free quota, gemini-3.1-flash-lite has a higher free RPD.
+const GEMINI_MODEL = "gemini-3-flash";
 
 const SYSTEM_PROMPT = `
 You are David Rupert Duca's friendly and intelligent portfolio assistant.
@@ -121,6 +121,12 @@ Deno.serve(async (req) => {
         return new Response(
           JSON.stringify({ error: "AI provider authentication failed. Check the GEMINI_API_KEY secret." }),
           { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      if (r.status === 404) {
+        return new Response(
+          JSON.stringify({ error: `The model "${GEMINI_MODEL}" is unavailable or deprecated. Update GEMINI_MODEL in index.ts to a current model name.` }),
+          { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
       return new Response(
