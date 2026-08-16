@@ -50,7 +50,22 @@ const Chatbot = () => {
       const { data, error } = await supabase.functions.invoke("chat", {
         body: { messages: next },
       });
-      if (error) throw new Error(error.message || "Chat failed");
+      if (error) {
+        // supabase-js doesn't auto-parse the JSON body of a non-2xx response —
+        // it's on error.context (a Response object), so we read it manually here
+        // to surface the actual reason instead of a generic status message.
+        let detail = error.message || "Chat failed";
+        try {
+          const ctx = (error as any).context;
+          if (ctx && typeof ctx.json === "function") {
+            const body = await ctx.json();
+            if (body?.error) detail = body.error;
+          }
+        } catch {
+          // ignore parse failures, fall back to the generic message
+        }
+        throw new Error(detail);
+      }
       if (data?.error) throw new Error(data.error);
       setMsgs([...next, { role: "assistant", content: data?.reply || "..." }]);
     } catch (e: unknown) {
