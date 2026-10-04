@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCertificate, FaShieldHalved, FaDownload, FaEye, FaXmark } from "react-icons/fa6";
+import { FaCertificate, FaShieldHalved, FaDownload, FaEye, FaXmark, FaAward, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { SiCisco } from "react-icons/si";
 import styles from "./Certifications.module.css";
 
@@ -121,6 +121,28 @@ const Certifications = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Recognition: official DepEd Philippines feature */}
+        <div className={`${styles.recognition} rv`}>
+          <div className={styles.recoIco}><FaAward /></div>
+          <div className={styles.recoBody}>
+            <div className={styles.recoTag}>Recognition</div>
+            <h3 className={styles.recoTitle}>Featured by DepEd Philippines</h3>
+            <p className={styles.recoText}>
+              Featured on the official DepEd Philippines Facebook page (April 11, 2025) as a Grade 12
+              SHS-TVL ICT (Computer Systems Servicing) student at Enrique B. Magalona National High School,
+              SDO Negros Occidental, on passing the Free TESDA National Certification Assessment.
+            </p>
+            <a
+              href="https://www.facebook.com/share/p/1F7441GUUG/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.recoLink}
+            >
+              View official post <FaArrowUpRightFromSquare />
+            </a>
+          </div>
         </div>
       </div>
 

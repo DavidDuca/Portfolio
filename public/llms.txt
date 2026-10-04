@@ -4,7 +4,7 @@
 
 ## Summary
 - Full name: David Rupert Duca
-- Roles: Co-founder & Applications Architect (SeedLynx), Web Developer, AI Specialist, Network Technician
+- Roles: Co-founder & Applications Architect (SeedLynx), Web Developer, AI Specialist, Freelance Web Developer, Network Technician
 - Location: Philippines
 - Portfolio: https://ducadavid-portfolio.vercel.app/
 - GitHub: https://github.com/DavidDuca
@@ -26,6 +26,9 @@
 - Networking Devices and Initial Configuration, Cisco Networking Academy
 - Network Addressing and Basic Troubleshooting, Cisco Networking Academy
 
+## Recognition
+- Featured by DepEd Philippines on its official Facebook page (April 11, 2025) as a Grade 12 SHS-TVL ICT (Computer Systems Servicing) student at Enrique B. Magalona National High School, SDO Negros Occidental, on passing the Free TESDA National Certification Assessment: https://www.facebook.com/share/p/1F7441GUUG/
+
 ## Skills
 - Frontend: HTML5, CSS3, JavaScript, TypeScript, React, Tailwind CSS
 - Backend: Node.js, Express.js, REST APIs, MongoDB, PostgreSQL, MySQL, PHP, JWT, Socket.io
@@ -35,7 +38,7 @@
 ## Projects
 - SeedLynx: web development and multimedia agency startup. https://seedlynx.vercel.app
 - PDFNova: free, privacy-focused PDF to Word converter. https://usepdfnova.vercel.app/
-- GrillSync Cloud: cloud platform for sales, orders, expenses and multi-branch restaurant managemant and analytics.
-- GrillSync: point of sale system, restaurant order tracking, inventory and staff coordination system.
+- GrillSync Cloud: cloud platform for sales, orders, expenses and multi-branch restaurant analytics.
+- GrillSync: restaurant order tracking, inventory and staff coordination system.
 - Whispr: real-time anonymous messaging app.
-- RiceWise: Sugar Intake Tracker.
+- RiceWise: rice production advisory system for Philippine farming.
