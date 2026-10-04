@@ -20,7 +20,6 @@
     <meta property="og:image:alt" content="David Rupert Duca — Web Developer and Co-founder of SeedLynx" />
     <meta property="profile:first_name" content="David Rupert" />
     <meta property="profile:last_name" content="Duca" />
-    <meta name="google-site-verification" content="TZgizZjq9ivqfFT90MwfqBlSzF09yXpDx_kItgIiV14" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -123,11 +122,9 @@
   </head>
 
   <body>
-    <div id="root"></div>
-
-    <!-- Crawler-readable copy of the portfolio (non-JS bots, AI crawlers). Visible only when JS is off. -->
-    <noscript>
-      <main style="font-family:sans-serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.6">
+    <div id="root">
+    <!-- Static fallback for crawlers; React replaces this when the app mounts -->
+    <main style="font-family:sans-serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.6">
         <h1>David Rupert Duca — Web Developer, Network Technician &amp; Co-founder of SeedLynx</h1>
         <p>David Rupert Duca is a Filipino web developer, network technician and Co-founder of SeedLynx. He is a BS Information Systems student at Carlos Hilado Memorial State University, open to freelance work, collaborations and internships.</p>
 
@@ -172,7 +169,7 @@
           <li><a href="https://www.linkedin.com/in/david-rupert-duca-578a96388/">LinkedIn</a></li>
         </ul>
       </main>
-    </noscript>
+    </div>
 
     <script type="module" src="/src/main.tsx"></script>
   </body>
