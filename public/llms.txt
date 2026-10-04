@@ -1,0 +1,41 @@
+# David Rupert Duca
+
+> David Rupert Duca is a Filipino web developer, network technician and Co-founder of SeedLynx. He is a BS Information Systems student at Carlos Hilado Memorial State University, certified in TESDA Computer Systems Servicing NC II and Cisco Networking Academy courses, and open to freelance work, collaborations and internships.
+
+## Summary
+- Full name: David Rupert Duca
+- Roles: Co-founder & Full-Stack Developer (SeedLynx), Freelance Web Developer, Network Technician
+- Location: Philippines
+- Portfolio: https://ducadavid-portfolio.vercel.app/
+- GitHub: https://github.com/DavidDuca
+- LinkedIn: https://www.linkedin.com/in/david-rupert-duca-578a96388/
+
+## Education
+- BS in Information Systems, Carlos Hilado Memorial State University (2025 – Present)
+- Senior High School, ICT Strand, E. B. Magalona National High School (2023 – 2025)
+- Junior High School, E. B. Magalona National High School (2019 – 2023)
+
+## Experience
+- Co-founder & Full-Stack Developer, SeedLynx (2024 – Present)
+- Freelance Web Developer, Independent (2024 – Present)
+- IT Infrastructure Trainee, TESDA / Cisco NetAcad Practicum (2024)
+
+## Certifications
+- Computer Systems Servicing NC II, TESDA
+- Networking Basics, Cisco Networking Academy
+- Networking Devices and Initial Configuration, Cisco Networking Academy
+- Network Addressing and Basic Troubleshooting, Cisco Networking Academy
+
+## Skills
+- Frontend: HTML5, CSS3, JavaScript, TypeScript, React, Tailwind CSS
+- Backend: Node.js, Express.js, REST APIs, MongoDB, PostgreSQL, MySQL, PHP, JWT, Socket.io
+- Networking: TCP/IP, OSI Model, DNS, DHCP, VLANs, Subnetting, LAN/WAN, Cisco IOS, Cisco Packet Tracer, Network Security
+- Tools: Git, GitHub, Vercel, Postman, npm/pnpm/yarn, AI-assisted development
+
+## Projects
+- SeedLynx: web development and multimedia agency startup. https://seedlynx.vercel.app
+- PDFNova: free, privacy-focused PDF to Word converter. https://usepdfnova.vercel.app/
+- GrillSync Cloud: cloud platform for sales, orders, expenses and multi-branch restaurant analytics.
+- GrillSync: restaurant order tracking, inventory and staff coordination system.
+- Whispr: real-time anonymous messaging app.
+- RiceWise: rice production advisory system for Philippine farming.

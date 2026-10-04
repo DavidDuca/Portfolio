@@ -39,7 +39,7 @@ const Hero = () => {
         <div className={styles.grid}>
           <div className="rv">
             <div className={styles.greeting}>Hello, I'm</div>
-            <h1 className={styles.name}>David Rupert</h1>
+            <h1 className={styles.name}>David Rupert <span className="sr-only">Duca</span></h1>
 
             <div className={styles.role}>
               <span className={styles.prefix}>I'm a</span>{" "}
@@ -81,7 +81,7 @@ const Hero = () => {
             <div className={styles.photoWrap}>
               <div className={styles.photoCard}>
                 <div className={styles.photoInner}>
-                  <img src={davidImg} alt="David Rupert Duca" width={768} height={896} />
+                  <img src={davidImg} alt="David Rupert Duca, web developer and Co-founder of SeedLynx" width={768} height={896} />
                 </div>
               </div>
               <div className={`${styles.badge} ${styles.badge1}`}>
